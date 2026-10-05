@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Architecture of Nature — Artan Buca</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #ffffff;
+      color: #222222;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    header {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 70px 30px 45px;
+      text-align: center;
+    }
+
+    .artist {
+      font-size: 15px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 42px;
+      font-weight: normal;
+      margin: 0 0 25px;
+    }
+
+    .intro {
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #555555;
+    }
+
+    .gallery {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 30px 80px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 45px 35px;
+    }
+
+    .painting {
+      margin: 0;
+    }
+
+    .painting img {
+      display: block;
+      width: 100%;
+      height: auto;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+
+    .painting img:hover {
+      opacity: 0.88;
+    }
+
+    figcaption {
+      padding-top: 13px;
+      font-size: 14px;
+      color: #555555;
+    }
+
+    .year {
+      color: #888888;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      color: #888888;
+    }
+
+    /* Fullscreen image */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.94);
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+    }
+
+    .lightbox img {
+      max-width: 95%;
+      max-height: 92vh;
+      object-fit: contain;
+    }
+
+    .close {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 38px;
+      font-weight: 200;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        padding: 50px 20px 35px;
+      }
+
+      h1 {
+        font-size: 32px;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+        padding: 10px 20px 50px;
+        gap: 35px;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <header>
+    <div class="artist">Artan Buca</div>
+
+<h1>The Architecture of Nature</h1>
+
+<p class="intro">
+  This series explores the relationship between humans and nature.
+  Over time, human interventions — a gate, a retaining wall, a bridge,
+  a monument — become part of the landscape, gradually dissolving into
+  what can be understood as the Architecture of Nature.
+</p>
+
+  </header>
+
+  <main class="gallery">
+
+<figure class="painting">
+  <img src="architecture-of-nature-01.jpg.jpg"
+       alt="Artan Buca, The Architecture of Nature, 2016"
+       onclick="openLightbox(this.src)">
+  <figcaption>The Architecture of Nature I <span class="year">— 2016</span></figcaption>
+</figure>
+
+<figure class="painting">
+  <img src="architecture-of-nature-02.jpg.jpg"
+       alt="Artan Buca, The Architecture of Nature, 2016"
+       onclick="openLightbox(this.src)">
+  <figcaption>The Architecture of Nature II <span class="year">— 2016</span></figcaption>
+</figure>
+
+<figure class="painting">
+  <img src="architecture-of-nature-03.jpg.jpg"
+       alt="Artan Buca, The Architecture of Nature, 2016"
+       onclick="openLightbox(this.src)">
+  <figcaption>The Architecture of Nature III <span class="year">— 2016</span></figcaption>
+</figure>
+
+<figure class="painting">
+  <img src="architecture-of-nature-04.jpg.jpg"
+       alt="Artan Buca, The Architecture of Nature, 2016"
+       onclick="openLightbox(this.src)">
+  <figcaption>The Architecture of Nature IV <span class="year">— 2016</span></figcaption>
+</figure>
+
+<figure class="painting">
+  <img src="architecture-of-nature-05.jpg.jpg"
+       alt="Artan Buca, The Architecture of Nature, 2016"
+       onclick="openLightbox(this.src)">
+  <figcaption>The Architecture of Nature V <span class="year">— 2016</span></figcaption>
+</figure>
+
+<figure class="painting">
+  <img src="architecture-of-nature-06.jpg.jpg"
+       alt="Artan Buca, The Architecture of Nature, 2016"
+       onclick="openLightbox(this.src)">
+  <figcaption>The Architecture of Nature VI <span class="year">— 2016</span></figcaption>
+</figure>
+
+  </main>
+
+  <footer>
+    COPYRIGHT © ARTAN BUCA 2026 ALL RIGHTS RESERVED
+  </footer>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="close">&times;</span>
+    <img id="lightbox-image" src="" alt="">
+  </div>
+
+  <script>
+    function openLightbox(src) {
+      document.getElementById("lightbox-image").src = src;
+      document.getElementById("lightbox").style.display = "flex";
+    }
+
+    function closeLightbox() {
+      document.getElementById("lightbox").style.display = "none";
+    }
+
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape") {
+        closeLightbox();
+      }
+    });
+  </script>
+
+</body>
+</html>
